@@ -1,5 +1,4 @@
-FROM centos:latest
-
+FROM ubuntu:22.04
 MAINTAINER sensandeep717@gmail.com
 
 RUN yum install -y httpd \
