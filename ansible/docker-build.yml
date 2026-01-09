@@ -1,7 +1,12 @@
-- hosts: localhost
+- name: Build Docker Image using Ansible
+  hosts: localhost
   connection: local
   become: true
 
+  vars:
+    image_name: sensandeep717/devops-project
+    image_tag: v1
+
   tasks:
-    - name: Build Docker image from Dockerfile
-      command: docker build -t sensandeep/apache-website:1.0 .
+    - name: Build Docker image
+      command: docker build -t {{ image_name }}:{{ image_tag }} .
