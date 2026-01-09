@@ -1,18 +1,18 @@
 FROM ubuntu:22.04
-MAINTAINER sensandeep717@gmail.com
 
-RUN yum install -y httpd \
-    zip \
-    unzip
+LABEL maintainer="sensandeep717@gmail.com"
 
-ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
+RUN apt-get update && \
+    apt-get install -y apache2 zip unzip wget && \
+    apt-get clean
 
-WORKDIR /var/www/html/
+WORKDIR /var/www/html
 
-RUN unzip photogenic.zip
-RUN cp -rvf photogenic/* .
-RUN rm -rf photogenic photogenic.zip
+RUN wget https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip && \
+    unzip photogenic.zip && \
+    cp -rvf photogenic/* . && \
+    rm -rf photogenic photogenic.zip
 
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80
 
-EXPOSE 80 22
+CMD ["apachectl", "-D", "FOREGROUND"]
