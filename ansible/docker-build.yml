@@ -2,11 +2,16 @@
   hosts: localhost
   connection: local
   become: true
+  gather_facts: false
 
   vars:
-    image_name: sensandeep717/devops-project
-    image_tag: v1
+    image_name: demoorg/sample-webapp
+    image_tag: v1.0
 
   tasks:
     - name: Build Docker image
-      command: docker build -t {{ image_name }}:{{ image_tag }} .
+      command: >
+        docker build
+        -t {{ image_name }}:{{ image_tag }}
+        -f ../Dockerfile
+        ..
