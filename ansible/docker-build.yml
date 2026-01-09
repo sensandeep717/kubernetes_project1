@@ -1,0 +1,7 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Build Docker image from Dockerfile
+      command: docker build -t sensandeep/apache-website:1.0 .
