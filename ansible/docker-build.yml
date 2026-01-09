@@ -12,5 +12,6 @@
     - name: Build Docker image
       command: >
         docker build
+        -f ../Dockerfile
         -t {{ image_name }}:{{ image_tag }}
-        .
+        ..
