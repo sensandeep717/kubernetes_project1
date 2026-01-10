@@ -5,7 +5,7 @@
   gather_facts: false
 
   vars:
-    image_name: demoorg/sample-webapp
+    image_name: sensandeep717/sample-webapp
     image_tag: v1.0
 
   tasks:
